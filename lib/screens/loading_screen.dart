@@ -24,11 +24,22 @@ class _LoadingScreenState extends State<LoadingScreen> {
   Widget build(BuildContext context) {
     String myMargin = "abc";
 
-    return Scaffold(
-      body: Container(
-        margin: EdgeInsets.all(double.parse(myMargin)),
-        color: Colors.red,
-      ),
-    );
+    try {
+      double myMarginAsADouble = double.parse(myMargin);
+      return Scaffold(
+        body: Container(
+          margin: EdgeInsets.all(myMarginAsADouble),
+          color: Colors.red,
+        ),
+      );
+    } catch (e) {
+      print(e);
+      return Scaffold(
+        body: Container(
+          margin: EdgeInsets.all(30),
+          color: Colors.red,
+        ),
+      );
+    }
   }
 }
